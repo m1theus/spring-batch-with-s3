@@ -1,0 +1,31 @@
+server:
+  port: ${SERVER_PORT:8080}
+  address: 0.0.0.0
+
+database:
+  host: 127.0.0.1
+  user: root
+  pass: "@Root123"
+  db: sb_app
+
+cloud:
+  aws:
+    credentials:
+      access-key: ANUJDEKAVADIYAEXAMPLE
+      secret-key: 2QvM4/Tdmf38SkcD/qalvXO4EXAMPLEKEY
+    region:
+        static: us-east-1
+    endpoint:
+      uri: http://s3.localhost.localstack.cloud:4566
+
+spring:
+  batch:
+    jdbc:
+      initialize-schema: always
+  application:
+    name: sb-app
+  datasource:
+    url: jdbc:mysql://${database.host}:3306/${database.db}?allowPublicKeyRetrieval=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${database.user}
+    password: ${database.pass}
